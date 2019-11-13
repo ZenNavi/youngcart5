@@ -7,7 +7,7 @@ if(!defined('G5_IS_ADMIN') && defined('G5_THEME_PATH') && is_file(G5_THEME_PATH.
     require_once(G5_THEME_PATH.'/head.sub.php');
     return;
 }
-
+$top_dir = preg_replace('/^\/([^\/]+).*?$/', '$1', $_SERVER['REQUEST_URI']);
 $begin_time = get_microtime();
 
 if (!isset($g5['title'])) {
@@ -54,8 +54,16 @@ if($config['cf_add_meta'])
 <title><?php echo $g5_head_title; ?></title>
 <?php
 if (defined('G5_IS_ADMIN')) {
-    if(!defined('_THEME_PREVIEW_'))
-        echo '<link rel="stylesheet" href="'.G5_ADMIN_URL.'/css/admin.css">'.PHP_EOL;
+    if(!defined('_THEME_PREVIEW_')) {
+        if ($top_dir == G5_ADMIN_DIR)
+            echo '<link rel="stylesheet" href="' . G5_ADMIN_URL . '/css/admin.css">' . PHP_EOL;
+        if ($top_dir == G5_SP_ADMIN_DIR)
+            echo '<link rel="stylesheet" href="' . G5_SP_ADMIN_URL . '/css/admin.css">' . PHP_EOL;
+        if ($top_dir == G5_FR_ADMIN_DIR)
+            echo '<link rel="stylesheet" href="' . G5_FR_ADMIN_URL . '/css/admin.css">' . PHP_EOL;
+        if ($top_dir == G5_ST_ADMIN_DIR)
+            echo '<link rel="stylesheet" href="' . G5_ST_ADMIN_URL . '/css/admin.css">' . PHP_EOL;
+    }
 } else {
     $shop_css = '';
     if (defined('_SHOP_')) $shop_css = '_shop';
@@ -80,6 +88,9 @@ var g5_cookie_domain = "<?php echo G5_COOKIE_DOMAIN ?>";
 var g5_admin_url = "<?php echo G5_ADMIN_URL; ?>";
 <?php } ?>
 </script>
+<?php if(defined('__ZEN__') && defined('G5_IS_ADMIN') ) { ?>
+<script src="<?php echo ZEN_JS_URL ?>/constant.js.php"></script>
+<?php } ?>
 <script src="<?php echo G5_JS_URL ?>/jquery-1.8.3.min.js"></script>
 <?php
 if (defined('_SHOP_')) {
@@ -104,7 +115,7 @@ if(!defined('G5_IS_ADMIN'))
     echo $config['cf_add_script'];
 ?>
 </head>
-<body<?php echo isset($g5['body_script']) ? $g5['body_script'] : ''; ?>>
+<body class="top--dir-<?php echo $top_dir; ?>" <?php echo isset($g5['body_script']) ? $g5['body_script'] : ''; ?>>
 <?php
 if ($is_member) { // 회원이라면 로그인 중이라는 메세지를 출력해준다.
     $sr_admin_msg = '';

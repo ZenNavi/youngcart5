@@ -198,6 +198,20 @@ function get_member_level_select($name, $start_id=0, $end_id=10, $selected="", $
 {
     global $g5;
 
+    $alias = array(
+      '0' => '탈퇴회원',
+      '1' => '손님',
+      '2' => '일반회원',
+      '3' => '정회원',
+      '4' => '우수회원',
+      '5' => '상품관리자',
+      '6' => '결제관리자',
+      '7' => '배송관리자',
+      '8' => '정산관리자',
+      '9' => '운영자',
+      '10' => '최고관리자',
+    );
+
     $str = "\n<select id=\"{$name}\" name=\"{$name}\"";
     if ($event) $str .= " $event";
     $str .= ">\n";
@@ -205,7 +219,7 @@ function get_member_level_select($name, $start_id=0, $end_id=10, $selected="", $
         $str .= '<option value="'.$i.'"';
         if ($i == $selected)
             $str .= ' selected="selected"';
-        $str .= ">{$i}</option>\n";
+        $str .= ">{$alias[$i]}</option>\n";
     }
     $str .= "</select>\n";
     return $str;

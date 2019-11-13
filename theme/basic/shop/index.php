@@ -21,7 +21,9 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 <!-- 히트상품 시작 { -->
 <section class="sct_wrap">
     <header>
-        <h2><a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=1">히트상품</a></h2>
+        <h2><a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=1">히트상품</a>
+            <?php echo $franchisee->fr_id; ?>
+        </h2>
     </header>
     <?php
     $list = new item_list();

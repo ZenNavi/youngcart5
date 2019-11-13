@@ -34,7 +34,7 @@ define('G5_HTTPS_DOMAIN', '');
 www.sir.kr 과 sir.kr 도메인은 서로 다른 도메인으로 인식합니다. 쿠키를 공유하려면 .sir.kr 과 같이 입력하세요.
 이곳에 입력이 없다면 www 붙은 도메인과 그렇지 않은 도메인은 쿠키를 공유하지 않으므로 로그인이 풀릴 수 있습니다.
 */
-define('G5_COOKIE_DOMAIN',  '');
+define('G5_COOKIE_DOMAIN',  '.youngcart5.at');
 
 define('G5_DBCONFIG_FILE',  'dbconfig.php');
 
@@ -157,8 +157,9 @@ define('G5_MOBILE_AGENT',   'phone|samsung|lgtel|mobile|[^A]skt|nokia|blackberry
 
 // SMTP
 // lib/mailer.lib.php 에서 사용
+
 define('G5_SMTP',      '127.0.0.1');
-define('G5_SMTP_PORT', '25');
+define('G5_SMTP_PORT', '1025');
 
 
 /********************

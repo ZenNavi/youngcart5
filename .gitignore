@@ -12,8 +12,14 @@ yc5_tree/
 cheditor5.*/
 ckeditor*/
 log/
-g5_tree/
 naver*.html
 initests01/
 SIRsoft000/
 config.php
+.idea/
+_youngcart5/
+zen/vendor/
+zen/composer.lock
+_work/
+zen/resource/cache/
+adm/css/.sass-cache/

@@ -18,7 +18,9 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         include G5_MOBILE_PATH.'/newwin.inc.php'; // 팝업레이어
     } ?>
     <ul id="hd_mb">
+        <?php if( G5_COMMUNITY_USE === true ) : ?>
         <li><a href="<?php echo G5_URL; ?>/">커뮤니티</a></li>
+        <?php endif; ?>
         <?php if ($is_member) { ?>
         <?php if ($is_admin) {  ?>
         <li><a href="<?php echo G5_ADMIN_URL ?>/shop_admin/"><b>관리자</b></a></li>

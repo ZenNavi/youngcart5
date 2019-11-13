@@ -34,9 +34,17 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
             <li class="tnb_cart"><a href="<?php echo G5_SHOP_URL; ?>/cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 장바구니</a></li>            
             <li><a href="<?php echo G5_SHOP_URL; ?>/mypage.php">마이페이지</a></li>
             <?php if ($is_member) { ?>
-
             <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=register_form.php">정보수정</a></li>
             <li><a href="<?php echo G5_BBS_URL; ?>/logout.php?url=shop">로그아웃</a></li>
+            <?php if($is_supplier) { ?>
+            <li class="tnb_admin"><a href="<?php echo G5_SP_ADMIN_URL; ?>/shop_admin/">공급사관리자</a></li>
+            <?php } ?>
+            <?php if($is_store_manager) { ?>
+            <li class="tnb_admin"><a href="<?php echo G5_ST_ADMIN_URL; ?>/shop_admin/">상점관리자</a></li>
+            <?php } ?>
+            <?php if($is_franchisee) { ?>
+            <li class="tnb_admin"><a href="<?php echo G5_FR_ADMIN_URL; ?>/shop_admin/">가맹관리자</a></li>
+            <?php } ?>
             <?php if ($is_admin) {  ?>
             <li class="tnb_admin"><a href="<?php echo G5_ADMIN_URL; ?>/shop_admin/"><b>관리자</b></a></li>
             <?php }  ?>
@@ -47,7 +55,9 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         </ul>
     </div>
     <div id="hd_wrapper">
-        <div id="logo"><a href="<?php echo G5_SHOP_URL; ?>/"><img src="<?php echo G5_DATA_URL; ?>/common/logo_img" alt="<?php echo $config['cf_title']; ?>"></a></div>
+        <div id="logo"><a href="<?php echo G5_SHOP_URL; ?>/">
+                <?php echo $_STORE->st_name; ?>
+                <img src="<?php echo G5_DATA_URL; ?>/common/logo_img" alt="<?php echo $config['cf_title']; ?>"></a></div>
 
         <div id="hd_sch">
             <h3>쇼핑몰 검색</h3>
